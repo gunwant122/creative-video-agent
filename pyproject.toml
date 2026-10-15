@@ -1,0 +1,48 @@
+[project]
+name = "cva"
+version = "0.1.0"
+description = "Creative Video Agent: headless edit/score/mix tools and a Deep Agents harness for AI-generated video"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "soundfile>=0.12",
+  "pretty_midi>=0.2.10",
+  "scenedetect>=0.6",
+  "opencv-python-headless>=4.8",
+  "pillow>=10",
+]
+
+[project.optional-dependencies]
+agent = [
+  "deepagents",
+  "langgraph",
+  "langgraph-checkpoint-sqlite",
+  "langchain-anthropic",
+  "langchain-mcp-adapters",
+  "langchain-openai",
+]
+server = ["fastapi", "uvicorn[standard]", "python-multipart", "sse-starlette"]
+gen = ["elevenlabs", "fal-client", "openai"]
+transcribe = ["mlx-whisper"]
+otio = ["opentimelineio"]
+dev = ["pytest"]
+
+[project.scripts]
+vv = "cva.vv.cli:main"
+vd = "cva.vd.cli:main"
+cva = "cva.cli:main"
+cva-chat = "cva.agent.chat:main"
+cva-web = "cva.server.app:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["cva*"]
+
+[tool.setuptools.package-data]
+"cva" = ["vv/help/*.md", "vd/help/*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

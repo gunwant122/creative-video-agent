@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cva-web-dev",
+      "runtimeExecutable": "/usr/bin/env",
+      "runtimeArgs": [
+        "CVA_PORT=8766",
+        ".venv/bin/python",
+        "-m",
+        "cva.server.app"
+      ],
+      "port": 8766
+    }
+  ]
+}

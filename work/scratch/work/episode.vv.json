@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "profile": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 24,
+  "sample_rate": 48000
+ },
+ "sources": {},
+ "clips": [],
+ "audio_fade_frames": 3,
+ "end": {
+  "fade_frames": 0
+ },
+ "renders": [],
+ "next_clip": 1
+}

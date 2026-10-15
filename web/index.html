@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creative Video Agent</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="bar">
+  <strong class="brand">Creative Video Agent</strong>
+  <select id="project" aria-label="Project"></select>
+  <button id="newProject" class="ghost">New project</button>
+  <span id="status" class="status"></span>
+</header>
+
+<main id="main" class="layout" hidden>
+  <section class="chat" aria-label="Conversation">
+    <div id="log" class="log"></div>
+    <form id="composer" class="composer">
+      <textarea id="input" rows="2" placeholder="e.g. Cut these clips into one episode for Reels, with an orchestral score"></textarea>
+      <button id="send" type="submit">Send</button>
+    </form>
+  </section>
+
+  <section class="side">
+    <nav class="tabs" role="tablist">
+      <button data-tab="plan" class="on">Plan</button>
+      <button data-tab="player">Player</button>
+      <button data-tab="reviews">Reviews</button>
+      <button data-tab="notes">Notes</button>
+      <button data-tab="brief">Brief</button>
+      <button data-tab="sources">Sources</button>
+      <button data-tab="spend">Spend</button>
+    </nav>
+    <div id="tab-plan" class="tab"><ol id="todos" class="todos"><li class="muted">No plan yet.</li></ol></div>
+    <div id="tab-player" class="tab" hidden>
+      <div id="versions" class="versions"></div>
+      <video id="video" controls playsinline></video>
+      <pre id="qc" class="qc muted">No delivered version yet.</pre>
+      <div class="listen">
+        <label for="listen">Watch, listen and tell the agent - your ears and eyes are the final check:</label>
+        <button id="mark" class="ghost" type="button">Mark this moment</button>
+        <textarea id="listen" rows="2" placeholder="Music too loud under the council scene; hit at 0:52 feels late"></textarea>
+        <button id="sendListen" class="ghost">Send feedback</button>
+      </div>
+    </div>
+    <div id="tab-reviews" class="tab" hidden>
+      <h3>Model findings</h3><div id="watch" class="muted">None yet.</div>
+      <h3>Glitch log</h3><pre id="glitches" class="muted">None yet.</pre>
+      <h3>Frame sheets and stills</h3><div id="images" class="grid"></div>
+    </div>
+    <div id="tab-notes" class="tab" hidden><pre id="notes" class="muted">No notes yet.</pre></div>
+    <div id="tab-brief" class="tab" hidden>
+      <p class="muted">House style for every episode in this project. The agent follows it over general conventions.</p>
+      <textarea id="brief" rows="16"></textarea>
+      <button id="saveBrief">Save brief</button>
+    </div>
+    <div id="tab-sources" class="tab" hidden>
+      <label class="drop" id="drop">
+        <input id="files" type="file" multiple accept="video/*,audio/*">
+        Drop clips here or click to choose
+      </label>
+      <ul id="sources" class="list"></ul>
+    </div>
+    <div id="tab-spend" class="tab" hidden>
+      <label>Paid generation budget (USD)
+        <input id="budget" type="number" min="0" step="0.5" placeholder="no limit">
+      </label>
+      <button id="saveBudget" class="ghost">Save budget</button>
+      <ul id="ledger" class="list"></ul>
+    </div>
+  </section>
+</main>
+
+<div id="empty" class="empty" hidden>
+  <p>Create a project, upload clips, then tell the agent what to make.</p>
+</div>
+
+<script type="module" src="/static/app.js"></script>
+</body>
+</html>

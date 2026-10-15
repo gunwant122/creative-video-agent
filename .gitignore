@@ -1,0 +1,9 @@
+.venv/
+.env
+projects/
+assets/libs/
+assets/generated/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+tools/
